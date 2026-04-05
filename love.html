@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Proposal 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+    text-align: center;
+}
+
+h1 {
+    margin-top: 80px;
+    color: white;
+    font-size: 2.5rem;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+button {
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#yes {
+    background: linear-gradient(45deg,#ff4d6d,#ff758c);
+    color: white;
+    box-shadow: 0 0 15px pink;
+}
+
+#no {
+    background: #333;
+    color: white;
+    position: absolute;
+}
+
+/* Message Box */
+#box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 320px;
+    box-shadow: 0 0 30px pink;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8) translate(-50%, -50%); }
+    to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+}
+
+/* Hearts Rain */
+.heart {
+    position: absolute;
+    color: red;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* Chocolate emoji floating */
+.choco {
+    position: absolute;
+    animation: fall 6s linear infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Tanvi Khairnar 💖<br>Do you love me?</h1>
+
+<button id="yes" onclick="showMessage()">Yes 💖</button>
+<button id="no">No 😏</button>
+
+<div id="box">
+    <h2>💖 Tanvi Khairnar 💖</h2>
+    <p>
+    Tanvi… ❤️<br><br>
+    You are the most beautiful part of my life.
+    Every moment with you feels magical 💫<br><br>
+    Your smile = my happiness 😊<br>
+    Your care = my strength 💪<br>
+    Your love = my world 🌍💖<br><br>
+    I promise to always love you, support you, and never leave your side ❤️<br><br>
+    I love you forever 😘💖
+    </p>
+</div>
+
+<script>
+function showMessage() {
+    document.getElementById("box").style.display = "block";
+    createHearts(40);
+}
+
+let noBtn = document.getElementById("no");
+
+setInterval(() => {
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}, 700);
+
+// Heart rain
+function createHearts(num) {
+    for(let i=0;i<num;i++){
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.fontSize = (Math.random()*20+10)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }
+}
+
+setInterval(()=>createHearts(5),500);
+
+// Chocolate rain 🍫
+setInterval(()=>{
+    let choco = document.createElement("div");
+    choco.className = "choco";
+    choco.innerHTML = "🍫";
+    choco.style.left = Math.random()*100 + "vw";
+    choco.style.fontSize = "20px";
+    document.body.appendChild(choco);
+    setTimeout(()=>choco.remove(),6000);
+},1000);
+</script>
+
+</body>
+</html>
